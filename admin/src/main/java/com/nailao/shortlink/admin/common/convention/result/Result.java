@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 全局返回对象
  *
  * @author nailao
- * @date 2024/5/28 22:27
+ * @date 2024/5/28 22:28
  */
 @Data
 @Accessors(chain = true)

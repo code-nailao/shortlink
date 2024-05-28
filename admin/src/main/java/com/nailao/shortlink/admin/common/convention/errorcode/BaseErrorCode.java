@@ -4,7 +4,7 @@ package com.nailao.shortlink.admin.common.convention.errorcode;
  * 基础错误码定义
  *
  * @author nailao
- * @date 2024/5/28 22:45
+ * @date 2024/5/28 22:46
  */
 public enum BaseErrorCode implements IErrorCode {
 
