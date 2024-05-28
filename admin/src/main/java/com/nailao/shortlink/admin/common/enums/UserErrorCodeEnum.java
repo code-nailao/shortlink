@@ -6,7 +6,7 @@ import com.nailao.shortlink.admin.common.convention.errorcode.IErrorCode;
  * 用户错误码枚举
  *
  * @author nailao
- * @date 2024/5/28 22:49
+ * @date 2024/5/28 22:45
  */
 public enum UserErrorCodeEnum implements IErrorCode {
 
