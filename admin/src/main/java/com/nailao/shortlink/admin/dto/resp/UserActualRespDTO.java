@@ -11,7 +11,7 @@ import lombok.Data;
  * @date 2024/5/28 22:01
  */
 @Data
-public class UserRespDTO {
+public class UserActualRespDTO {
 
     /**
      * id
@@ -31,7 +31,6 @@ public class UserRespDTO {
     /**
      * 手机号
      */
-    @JsonSerialize(using = PhoneDesensitizationSerializer.class)
     private String phone;
 
     /**
