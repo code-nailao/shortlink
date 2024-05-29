@@ -13,6 +13,11 @@ spring:
       idle-timeout: 300000
       maximum-pool-size: 5
       minimum-idle: 5
+  data:
+    redis:
+      host: 192.168.177.128
+      port: 6379
+      AUTH: 123456
 logging:
   level:
     com.itheima: debug
