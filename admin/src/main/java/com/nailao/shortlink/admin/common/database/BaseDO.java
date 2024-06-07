@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.nailao.shortlink.admin.database;
+package com.nailao.shortlink.admin.common.database;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
