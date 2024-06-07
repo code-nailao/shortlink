@@ -18,7 +18,7 @@
 package com.nailao.shortlink.admin.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.nailao.shortlink.admin.database.BaseDO;
+import com.nailao.shortlink.admin.common.database.BaseDO;
 import lombok.Data;
 
 /**
