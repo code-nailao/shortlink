@@ -1,8 +1,11 @@
 package com.nailao.shortlink.admin.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.nailao.shortlink.admin.database.BaseDO;
+import com.nailao.shortlink.admin.common.database.BaseDO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 短链接分组实体
@@ -12,6 +15,9 @@ import lombok.Data;
  */
 @Data
 @TableName("t_group")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class GroupDO extends BaseDO {
 
     /**
