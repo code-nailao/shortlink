@@ -1,8 +1,13 @@
 package com.nailao.shortlink.admin.controller;
 
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.nailao.shortlink.admin.common.biz.user.UserContext;
 import com.nailao.shortlink.admin.common.convention.result.Result;
 import com.nailao.shortlink.admin.common.convention.result.Results;
+import com.nailao.shortlink.admin.dao.entity.GroupDO;
 import com.nailao.shortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import com.nailao.shortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
 import com.nailao.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.nailao.shortlink.admin.dto.resp.ShortLinkGroupRespDTO;
 import com.nailao.shortlink.admin.service.GroupService;
@@ -55,6 +60,15 @@ public class GroupController {
     @DeleteMapping("/api/short-link/admin/v1/group")
     public Result<Void> updateGroup(@RequestParam String gid) {
         groupService.deleteGroup(gid);
+        return Results.success();
+    }
+
+    /**
+     * 排序短链接分组
+     */
+    @PostMapping("/api/short-link/admin/v1/group/sort")
+    public Result<Void> sortGroup(@RequestBody List<ShortLinkGroupSortReqDTO> requestParam) {
+        groupService.sortGroup(requestParam);
         return Results.success();
     }
 
