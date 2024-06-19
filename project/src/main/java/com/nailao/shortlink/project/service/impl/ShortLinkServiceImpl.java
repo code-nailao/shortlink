@@ -1,15 +1,19 @@
 package com.nailao.shortlink.project.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.UUID;
 import cn.hutool.core.text.StrBuilder;
 import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nailao.shortlink.project.common.convention.exception.ClientException;
 import com.nailao.shortlink.project.common.convention.exception.ServiceException;
 import com.nailao.shortlink.project.dao.entity.ShortLinkDO;
 import com.nailao.shortlink.project.dao.mapper.ShortLinkMapper;
 import com.nailao.shortlink.project.dto.req.ShortLinkCreateReqDTO;
+import com.nailao.shortlink.project.dto.req.ShortLinkPageReqDTO;
 import com.nailao.shortlink.project.dto.resp.ShortLinkCreateRespDTO;
+import com.nailao.shortlink.project.dto.resp.ShortLinkPageRespDTO;
 import com.nailao.shortlink.project.service.ShortLinkService;
 import com.nailao.shortlink.project.toolkit.HashUtil;
 import lombok.RequiredArgsConstructor;
@@ -119,7 +123,15 @@ public class ShortLinkServiceImpl extends ServiceImpl<ShortLinkMapper, ShortLink
         return shorUri;
     }
 
-
+    @Override
+    public IPage<ShortLinkPageRespDTO> pageShortLink(ShortLinkPageReqDTO requestParam) {
+        IPage<ShortLinkDO> resultPage = baseMapper.pageLink(requestParam);
+        return resultPage.convert(each -> {
+            ShortLinkPageRespDTO result = BeanUtil.toBean(each, ShortLinkPageRespDTO.class);
+            result.setDomain("http://" + result.getDomain());
+            return result;
+        });
+    }
 
     private void verificationWhitelist(String originUrl) {
         Boolean enable = gotoDomainWhiteListConfiguration.getEnable();

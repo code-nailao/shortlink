@@ -16,6 +16,7 @@ public class UserTableShardingTest2 {
             "    origin_url      varchar(1024)               null comment '原始链接',\n" +
             "    click_num       int default 0               null comment '点击量',\n" +
             "    gid             varchar(32)                 null comment '分组标识',\n" +
+            "    favicon         varchar(256)                null comment '网站图标',\n" +
             "    enable_status   tinyint(1)                  null comment '启用标识 0：启用 1：未启用',\n" +
             "    created_type    tinyint(1)                  null comment '创建类型 0：控制台 1：接口',\n" +
             "    valid_date_type tinyint(1)                  null comment '有效期类型 0：永久有效 1：用户自定义',\n" +
