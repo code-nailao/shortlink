@@ -10,11 +10,14 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.nailao.shortlink.admin.common.biz.user.UserContext;
 import com.nailao.shortlink.admin.common.convention.exception.ClientException;
+import com.nailao.shortlink.admin.common.convention.result.Result;
 import com.nailao.shortlink.admin.dao.entity.GroupDO;
 import com.nailao.shortlink.admin.dao.mapper.GroupMapper;
 import com.nailao.shortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
 import com.nailao.shortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.nailao.shortlink.admin.dto.resp.ShortLinkGroupRespDTO;
+import com.nailao.shortlink.admin.remote.ShortLinkActualRemoteService;
+import com.nailao.shortlink.admin.remote.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import com.nailao.shortlink.admin.service.GroupService;
 import com.nailao.shortlink.admin.toolkit.RandomGenerator;
 import groovy.util.logging.Slf4j;
@@ -26,6 +29,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 /**
  * 短链接分组接口实现层
@@ -40,6 +45,7 @@ public class GroupServiceImpl extends ServiceImpl<GroupMapper, GroupDO> implemen
 
     private final RBloomFilter<String> gidRegisterCachePenetrationBloomFilter;
     private final RedissonClient redissonClient;
+    private final ShortLinkActualRemoteService shortLinkActualRemoteService;
 
 //    @Value("${short-link.group.max-num}")
 //    private Integer groupMaxNum;
@@ -66,7 +72,16 @@ public class GroupServiceImpl extends ServiceImpl<GroupMapper, GroupDO> implemen
                 .eq(GroupDO::getUsername, UserContext.getUsername())
                 .orderByDesc(GroupDO::getSortOrder, GroupDO::getUpdateTime);
         List<GroupDO> groupDOList = baseMapper.selectList(queryWrapper);
-        return BeanUtil.copyToList(groupDOList, ShortLinkGroupRespDTO.class);
+        Result<List<ShortLinkGroupCountQueryRespDTO>> listResult = shortLinkActualRemoteService
+                .listGroupShortLinkCount(groupDOList.stream().map(GroupDO::getGid).toList());
+        List<ShortLinkGroupRespDTO> shortLinkGroupRespDTOList = BeanUtil.copyToList(groupDOList, ShortLinkGroupRespDTO.class);
+        shortLinkGroupRespDTOList.forEach(each -> {
+            Optional<ShortLinkGroupCountQueryRespDTO> first = listResult.getData().stream()
+                    .filter(item -> Objects.equals(item.getGid(), each.getGid()))
+                    .findFirst();
+            first.ifPresent(item -> each.setShortLinkCount(first.get().getShortLinkCount()));
+        });
+        return shortLinkGroupRespDTOList;
     }
 
     @Override
