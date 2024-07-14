@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * MyBatis-Plus 原数据自动填充类
- *
  * @author nailao
  * @date 2024/5/29 15:19
  */
