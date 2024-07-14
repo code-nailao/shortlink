@@ -14,7 +14,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @author nailao
  * @date 2024/6/10 13:16
  */
-@Configuration
+@Configuration(value = "userConfigurationByAdmin")
 public class UserConfiguration {
 
     /**
