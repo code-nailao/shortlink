@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @author nailao
  * @date 2024/6/19 14:14
  */
-@Configuration(value = "dataBaseConfigurationByAdmin")
+@Configuration(value = "dataBaseConfigurationByProject")
 public class DataBaseConfiguration {
 
     /**
