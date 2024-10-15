@@ -104,7 +104,7 @@ const truncateText = (text, maxLength) => {
 }
 
 .header {
-  background-color: #333333;
+  background-color: rgb(255, 255, 255);
   padding: 0 0 0 20px;
   height: 100%;
   display: flex;
@@ -131,7 +131,7 @@ const truncateText = (text, maxLength) => {
 .logo {
   font-size: 15px;
   font-weight: 600;
-  color: #e8e8e8;
+  color: #818a93;
   font-family: Helvetica, Tahoma, Arial, 'PingFang SC', 'Hiragino Sans GB', 'Heiti SC',
     'Microsoft YaHei', 'WenQuanYi Micro Hei';
   // font-family: 'Helvetica Neue', Helvetica, STHeiTi, Arial, sans-serif;
@@ -139,7 +139,7 @@ const truncateText = (text, maxLength) => {
 }
 
 .logo:hover {
-  color: #fff;
+  color: #008adc;
 }
 
 .link-span {
@@ -159,7 +159,7 @@ const truncateText = (text, maxLength) => {
 }
 
 .name-span {
-  color: #fff;
+  color: #000000;
   opacity: .6;
   margin-right: 30px;
   font-size: 12px;

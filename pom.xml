@@ -33,7 +33,6 @@
         <module>aggregation</module>
         <module>project</module>
         <module>gateway</module>
-        <module>aggregation</module>
     </modules>
 
     <dependencies>
@@ -136,17 +135,17 @@
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>${spotless-maven-plugin.version}</version>
-                <configuration>
+          <!--      <configuration>
                     <java>
-                        <!--<eclipse>
+                        &lt;!&ndash;<eclipse>
                             <file>${maven.multiModuleProjectDirectory}/format/short-link_spotless_formatter.xml</file>
-                        </eclipse>-->
+                        </eclipse>&ndash;&gt;
                         <licenseHeader>
-                            <!-- ${maven.multiModuleProjectDirectory} 爆红属于正常，并不影响编译或者运行，忽略就好 -->
-                            <file>${maven.multiModuleProjectDirectory}/format/license-header</file>
+                            &lt;!&ndash; ${maven.multiModuleProjectDirectory} 爆红属于正常，并不影响编译或者运行，忽略就好 &ndash;&gt;
+&lt;!&ndash;                            <file>${maven.multiModuleProjectDirectory}/format/license-header</file>&ndash;&gt;
                         </licenseHeader>
                     </java>
-                </configuration>
+                </configuration>-->
                 <executions>
                     <execution>
                         <goals>

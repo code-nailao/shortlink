@@ -87,7 +87,7 @@ const { proxy } = getCurrentInstance()
 const API = proxy.$API
 // url的校验规则
 const reg =
-  /^(https?:\/\/(([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+\.)+(([a-zA-Z0-9]+-?)+[a-zA-Z0-9]+))(:\d+)?(\/.*)?(\?.*)?(#.*)?$/
+    /(https?|ftp|file):\/\/[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]/
 // 自定义时间中选择几天
 const shortcuts = [
   {

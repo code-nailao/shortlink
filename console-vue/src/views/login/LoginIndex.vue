@@ -131,7 +131,8 @@ import { ref, reactive, onMounted, onBeforeUnmount, watch, getCurrentInstance } 
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import * as THREE from 'three'
-import WAVES from 'vanta/src/vanta.waves'
+// import WAVES from 'vanta/src/vanta.waves'
+import WAVES from 'vanta/src/vanta.clouds'
 const { proxy } = getCurrentInstance()
 const API = proxy.$API
 const loginFormRef1 = ref()
@@ -311,7 +312,7 @@ const vantaRef = ref()
 // 动态背景
 let vantaEffect = null
 onMounted(() => {
-  vantaEffect = WAVES({
+  /*vantaEffect = WAVES({
     el: vantaRef.value,
     THREE: THREE,
     mouseControls: true,
@@ -321,6 +322,15 @@ onMounted(() => {
     minWidth: 200.0,
     scale: 1.0,
     scaleMobile: 1.0
+  })*/
+  vantaEffect = WAVES({
+    el: vantaRef.value,
+    THREE: THREE,
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00
   })
 })
 onBeforeUnmount(() => {
@@ -494,7 +504,7 @@ const changeLogin = () => {
   top: 15%;
   z-index: 999;
   font-size: 40px;
-  color: #fff;
+  color: #000000;
   font-weight: bolder;
 }
 
